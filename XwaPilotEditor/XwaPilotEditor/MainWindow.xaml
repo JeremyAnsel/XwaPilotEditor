@@ -1,0 +1,923 @@
+﻿<Window x:Class="XwaPilotEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XwaPilotEditor"
+        xmlns:pilot="clr-namespace:JeremyAnsel.Xwa.Pilot;assembly=JeremyAnsel.Xwa.Pilot"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:MainWindow}"
+        Title="{Binding PilotFileName, StringFormat='Xwa Pilot Editor {0}', FallbackValue='Xwa Pilot Editor'}"
+        Height="500"
+        Width="850"
+        UseLayoutRounding="True">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New"
+                        Executed="ExecuteNewPilot" />
+        <CommandBinding Command="ApplicationCommands.Open"
+                        Executed="ExecuteOpenPilot" />
+        <CommandBinding Command="ApplicationCommands.Save"
+                        Executed="ExecuteSavePilot" />
+        <CommandBinding Command="ApplicationCommands.SaveAs"
+                        Executed="ExecuteSaveAsPilot" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Bottom"
+                   Text="{Binding PilotFileName}" />
+        <ToolBar DockPanel.Dock="Top"
+                 ToolBarTray.IsLocked="True">
+            <Button Command="ApplicationCommands.New">New</Button>
+            <Button Command="ApplicationCommands.Open">Open...</Button>
+            <Button Command="ApplicationCommands.Save">Save</Button>
+            <Button Command="ApplicationCommands.SaveAs">Save As...</Button>
+        </ToolBar>
+        <TabControl>
+            <TabItem Header="General">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock Text="Name:" />
+                        <TextBox Text="{Binding Pilot.Name, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="TotalScore:" />
+                        <TextBox Text="{Binding Pilot.TotalScore, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="NumHumanPlayersLastMission:" />
+                        <TextBox Text="{Binding Pilot.NumHumanPlayersLastMission, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="M00022_ABD7B4:" />
+                        <TextBox Text="{Binding Pilot.M00022_ABD7B4, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Team:" />
+                        <TextBox Text="{Binding Pilot.Team, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="MissionDirectoryId:" />
+                        <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
+                                            Text="{Binding Pilot.MissionDirectoryId}" />
+                        <TextBlock Text="MissionDescriptionIds:" />
+                        <local:ListBoxEditor ItemsSource="{Binding Pilot.MissionDescriptionIds}"
+                                             Tag="{x:Type pilot:PilotMissionDirectory}" />
+                        <TextBlock Text="MultiplayerGameName:" />
+                        <TextBox Text="{Binding Pilot.MultiplayerGameName, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="MultiplayerHostName:" />
+                        <TextBox Text="{Binding Pilot.MultiplayerHostName, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="CurrentRatingPromoPoints:" />
+                        <TextBox Text="{Binding Pilot.CurrentRatingPromoPoints, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="CurrentRatingWorsePromoPoints:" />
+                        <TextBox Text="{Binding Pilot.CurrentRatingWorsePromoPoints, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="NewPromotion:" />
+                        <TextBox Text="{Binding Pilot.NewPromotion, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="NextPromotionPercent:" />
+                        <TextBox Text="{Binding Pilot.NextPromotionPercent, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="MissionScore:" />
+                        <TextBox Text="{Binding Pilot.MissionScore, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="NewCraftAddedToTechRoom:" />
+                        <TextBox Text="{Binding Pilot.NewCraftAddedToTechRoom, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="PilotRating:" />
+                        <local:EnumComboBox EnumType="{x:Type pilot:PilotRating}"
+                                            Text="{Binding Pilot.PilotRating}" />
+                        <TextBlock Text="PilotRank:" />
+                        <local:EnumComboBox EnumType="{x:Type pilot:PilotRank}"
+                                            Text="{Binding Pilot.PilotRank}" />
+                        <TextBlock Text="KalidorCresent:" />
+                        <TextBox Text="{Binding Pilot.KalidorCresent, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="TotalMissionsPlayedCount:" />
+                        <TextBox Text="{Binding Pilot.TotalMissionsPlayedCount, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="TotalMissionsPlayedCountPerRating:" />
+                        <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalMissionsPlayedCountPerRating}"
+                                             Tag="{x:Type pilot:PilotRating}" />
+                        <TextBlock Text="PilotRatingName:" />
+                        <TextBox Text="{Binding Pilot.PilotRatingName, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="EmkayAnnounceNewAward:" />
+                        <TextBox Text="{Binding Pilot.EmkayAnnounceNewAward, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="EmkayAnnounceNewRank:" />
+                        <TextBox Text="{Binding Pilot.EmkayAnnounceNewRank, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="FamilyNewMedal:" />
+                        <TextBox Text="{Binding Pilot.FamilyNewMedal, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="TacOfficerAnnounceNewRank:" />
+                        <TextBox Text="{Binding Pilot.TacOfficerAnnounceNewRank, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="CurrentFactionId:" />
+                        <local:EnumComboBox EnumType="{x:Type pilot:PilotFactionId}"
+                                            Text="{Binding Pilot.CurrentFactionId}" />
+                        <TextBlock Text="EmailsSortCriterion:" />
+                        <TextBox Text="{Binding Pilot.EmailsSortCriterion, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="CampaignMode:" />
+                        <TextBox Text="{Binding Pilot.CampaignMode, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="SkipMissionsRemaining:" />
+                        <TextBox Text="{Binding Pilot.SkipMissionsRemaining, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="RegionsCount:" />
+                        <TextBox Text="{Binding Pilot.RegionsCount, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="MissionFileName:" />
+                        <TextBox Text="{Binding Pilot.MissionFileName, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="ProvingGroundsMissionPerPlayer:" />
+                        <local:ListBoxEditor ItemsSource="{Binding Pilot.ProvingGroundsMissionPerPlayer}"
+                                             Tag="" />
+                        <TextBlock Text="MeleeMissionIndex:" />
+                        <TextBox Text="{Binding Pilot.MeleeMissionIndex, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="HangarType:" />
+                        <local:EnumComboBox EnumType="{x:Type pilot:PilotHangar}"
+                                            Text="{Binding Pilot.HangarType}" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="CurrentStats">
+                <TabControl>
+                    <TabItem Header="PerMissionType">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="TotalScorePerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalScorePerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalMissionsPlayedCountPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.NumOfSpecialCraftInspectedPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.EnergyWeaponsHitsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.EnergyWeaponsFiredPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="WarheadsHitsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.WarheadsHitsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="WarheadsFiredPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.WarheadsFiredPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalCraftLossesPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalCraftLossesPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="LossesByCollisionsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByCollisionsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="LossesByStarshipsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByStarshipsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="LossesByMinesPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByMinesPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalKillsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalKillsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalFriendliesKilledPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsPerCraft">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsPerCraftPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="" />
+                                <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="" />
+                                <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsOnPlayerRating">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsFullOnPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsFullOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                                <TextBlock Text="KillsSharedOnPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsSharedOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                                <TextBlock Text="KillsAssistOnPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsAssistOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsOnAIRating">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsFullOnAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsFullOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                                <TextBlock Text="KillsSharedOnAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsSharedOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                                <TextBlock Text="KillsAssistOnAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KillsAssistOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KilledBy">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KilledByPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KilledByPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                                <TextBlock Text="KilledByAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.KilledByAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsPerPlayer">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsFullOnPlayer:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullOnPlayer}" />
+                                <TextBlock Text="KillsSharedOnPlayer:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedOnPlayer}" />
+                                <TextBlock Text="KillsFullFromPlayer:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullFromPlayer}" />
+                                <TextBlock Text="KillsSharedFromPlayer:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedFromPlayer}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsPerFlightGroup">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsFullOnFlightGroup:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullOnFlightGroup}" />
+                                <TextBlock Text="KillsSharedOnFlightGroup:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedOnFlightGroup}" />
+                                <TextBlock Text="KillsFullFromFlightGroup:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullFromFlightGroup}" />
+                                <TextBlock Text="KillsSharedFromFlightGroup:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedFromFlightGroup}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="FlightGroupRating">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="FlightGroupRating:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.FlightGroupRating}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="ObjectStats">
+                <TabControl>
+                    <TabItem Header="PerMissionType">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="TotalScorePerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalScorePerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalMissionsPlayedCountPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.NumOfSpecialCraftInspectedPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.EnergyWeaponsHitsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.EnergyWeaponsFiredPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="WarheadsHitsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.WarheadsHitsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="WarheadsFiredPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.WarheadsFiredPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalCraftLossesPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalCraftLossesPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="LossesByCollisionsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByCollisionsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="LossesByStarshipsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByStarshipsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="LossesByMinesPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByMinesPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalKillsPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalKillsPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                                <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalFriendliesKilledPerMissionType}"
+                                                     Tag="{x:Type pilot:PilotMissionCategory}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsPerCraft">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsPerCraftPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="" />
+                                <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="" />
+                                <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsOnPlayerRating">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsFullOnPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsFullOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                                <TextBlock Text="KillsSharedOnPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsSharedOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                                <TextBlock Text="KillsAssistOnPlayerRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsAssistOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotRating}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="KillsOnAIRating">
+                        <ScrollViewer>
+                            <StackPanel>
+                                <TextBlock Text="KillsFullOnAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsFullOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                                <TextBlock Text="KillsSharedOnAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsSharedOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                                <TextBlock Text="KillsAssistOnAIRatingPerMissionType:" />
+                                <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsAssistOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                      Tag="{x:Type pilot:PilotAiRank}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Missions">
+                <TabControl>
+                    <TabItem Header="TourOfDutyMission">
+                        <local:DataGridEditor ItemsSource="{Binding Pilot.TourOfDutyMissionStatistics}"
+                                              Tag="" />
+                    </TabItem>
+                    <TabItem Header="CombatChamberMission">
+                        <local:DataGridEditor ItemsSource="{Binding Pilot.CombatChamberMissionStatistics}"
+                                              Tag="" />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="CraftKnown">
+                <local:ListBoxEditor ItemsSource="{Binding Pilot.CraftKnown}"
+                                     Tag="" />
+            </TabItem>
+            <TabItem Header="NetworkPlayers">
+                <local:DataGridEditor ItemsSource="{Binding Pilot.NetworkPlayers}"
+                                      Tag="" />
+            </TabItem>
+            <TabItem Header="Teams">
+                <local:DataGridEditor ItemsSource="{Binding Pilot.TeamsStatistics}"
+                                      Tag="" />
+            </TabItem>
+            <TabItem Header="Factions">
+                <TabControl>
+                    <TabItem Header="Faction 0"
+                             DataContext="{Binding Pilot.FactionStatistics[0]}">
+                        <TabControl>
+                            <TabItem Header="General">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalMissionsPlayedCount:" />
+                                        <TextBox Text="{Binding TotalMissionsPlayedCount, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="Team:" />
+                                        <TextBox Text="{Binding Team, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="MissionDirectoryId:" />
+                                        <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
+                                                            Text="{Binding MissionDirectoryId}" />
+                                        <TextBlock Text="MissionDescriptionIds:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                                             Tag="{x:Type pilot:PilotMissionDirectory}" />
+                                        <TextBlock Text="M0048:" />
+                                        <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="AwardsCount1:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0064:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                                             Tag="" />
+                                        <TextBlock Text="AwardsCount2:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0094:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                                             Tag="" />
+                                        <TextBlock Text="KalidorCrescentPoints:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                                             Tag="" />
+                                        <TextBlock Text="Score:" />
+                                        <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="BonusScore:" />
+                                        <TextBox Text="{Binding BonusScore, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="TotalScore:" />
+                                        <TextBox Text="{Binding TotalScore, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="PerMissionType">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalScorePerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalCraftLossesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByCollisionsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByStarshipsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByMinesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalKillsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsPerCraft">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnPlayerRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsSharedOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsAssistOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnAIRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsSharedOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsAssistOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                    <TabItem Header="Faction 1"
+                             DataContext="{Binding Pilot.FactionStatistics[1]}">
+                        <TabControl>
+                            <TabItem Header="General">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalMissionsPlayedCount:" />
+                                        <TextBox Text="{Binding TotalMissionsPlayedCount, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="Team:" />
+                                        <TextBox Text="{Binding Team, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="MissionDirectoryId:" />
+                                        <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
+                                                            Text="{Binding MissionDirectoryId}" />
+                                        <TextBlock Text="MissionDescriptionIds:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                                             Tag="{x:Type pilot:PilotMissionDirectory}" />
+                                        <TextBlock Text="M0048:" />
+                                        <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="AwardsCount1:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0064:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                                             Tag="" />
+                                        <TextBlock Text="AwardsCount2:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0094:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                                             Tag="" />
+                                        <TextBlock Text="KalidorCrescentPoints:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                                             Tag="" />
+                                        <TextBlock Text="Score:" />
+                                        <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="BonusScore:" />
+                                        <TextBox Text="{Binding BonusScore, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="TotalScore:" />
+                                        <TextBox Text="{Binding TotalScore, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="PerMissionType">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalScorePerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalCraftLossesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByCollisionsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByStarshipsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByMinesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalKillsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsPerCraft">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnPlayerRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsSharedOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsAssistOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnAIRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsSharedOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsAssistOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                    <TabItem Header="Faction 2"
+                             DataContext="{Binding Pilot.FactionStatistics[2]}">
+                        <TabControl>
+                            <TabItem Header="General">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalMissionsPlayedCount:" />
+                                        <TextBox Text="{Binding TotalMissionsPlayedCount, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="Team:" />
+                                        <TextBox Text="{Binding Team, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="MissionDirectoryId:" />
+                                        <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
+                                                            Text="{Binding MissionDirectoryId}" />
+                                        <TextBlock Text="MissionDescriptionIds:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                                             Tag="{x:Type pilot:PilotMissionDirectory}" />
+                                        <TextBlock Text="M0048:" />
+                                        <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="AwardsCount1:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0064:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                                             Tag="" />
+                                        <TextBlock Text="AwardsCount2:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0094:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                                             Tag="" />
+                                        <TextBlock Text="KalidorCrescentPoints:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                                             Tag="" />
+                                        <TextBlock Text="Score:" />
+                                        <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="BonusScore:" />
+                                        <TextBox Text="{Binding BonusScore, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="TotalScore:" />
+                                        <TextBox Text="{Binding TotalScore, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="PerMissionType">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalScorePerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalCraftLossesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByCollisionsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByStarshipsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByMinesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalKillsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsPerCraft">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnPlayerRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsSharedOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsAssistOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnAIRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsSharedOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsAssistOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                    <TabItem Header="Faction 3"
+                             DataContext="{Binding Pilot.FactionStatistics[3]}">
+                        <TabControl>
+                            <TabItem Header="General">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalMissionsPlayedCount:" />
+                                        <TextBox Text="{Binding TotalMissionsPlayedCount, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="Team:" />
+                                        <TextBox Text="{Binding Team, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="MissionDirectoryId:" />
+                                        <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
+                                                            Text="{Binding MissionDirectoryId}" />
+                                        <TextBlock Text="MissionDescriptionIds:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                                             Tag="{x:Type pilot:PilotMissionDirectory}" />
+                                        <TextBlock Text="M0048:" />
+                                        <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="AwardsCount1:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0064:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                                             Tag="" />
+                                        <TextBlock Text="AwardsCount2:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                                             Tag="" />
+                                        <TextBlock Text="M0094:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                                             Tag="" />
+                                        <TextBlock Text="KalidorCrescentPoints:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                                             Tag="" />
+                                        <TextBlock Text="Score:" />
+                                        <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="BonusScore:" />
+                                        <TextBox Text="{Binding BonusScore, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="TotalScore:" />
+                                        <TextBox Text="{Binding TotalScore, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="PerMissionType">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="TotalScorePerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsHitsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="WarheadsFiredPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalCraftLossesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByCollisionsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByStarshipsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="LossesByMinesPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalKillsPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                        <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                                             Tag="{x:Type pilot:PilotMissionCategory}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsPerCraft">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                        <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnPlayerRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsSharedOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                        <TextBlock Text="KillsAssistOnPlayerRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnPlayerRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotRating}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="KillsOnAIRating">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <TextBlock Text="KillsFullOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsFullOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsSharedOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsSharedOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                        <TextBlock Text="KillsAssistOnAIRatingPerMissionType:" />
+                                        <local:DataGridEditor ItemsSource="{Binding KillsAssistOnAIRatingPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
+                                                              Tag="{x:Type pilot:PilotAiRank}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="EmailsStatus">
+                <local:ListBoxEditor ItemsSource="{Binding Pilot.EmailsStatus}"
+                                     Tag="" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

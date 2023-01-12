@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:XwaPilotEditor">
+
+    <Style TargetType="{x:Type local:EnumComboBox}"
+           BasedOn="{StaticResource {x:Type ComboBox}}">
+    </Style>
+
+    <Style TargetType="{x:Type local:ListBoxEditor}"
+           BasedOn="{StaticResource {x:Type ListBox}}">
+    </Style>
+
+    <Style TargetType="{x:Type local:DataGridEditor}"
+           BasedOn="{StaticResource {x:Type DataGrid}}">
+    </Style>
+
+</ResourceDictionary>

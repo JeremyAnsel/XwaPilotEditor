@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Version>1.0.0</Version>
+    <Company>Jérémy Ansel</Company>
+    <Copyright>Copyright © 2023 Jérémy Ansel</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JeremyAnsel.Xwa.Pilot" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>
