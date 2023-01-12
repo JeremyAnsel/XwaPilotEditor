@@ -1,0 +1,29 @@
+image: Visual Studio 2022
+version: 1.0.{build}
+configuration: Release
+
+init:
+- if "%APPVEYOR_REPO_NAME%" == "JeremyAnsel/XwaPilotEditor" if "%APPVEYOR_REPO_BRANCH%"=="main" if not defined APPVEYOR_PULL_REQUEST_NUMBER set DEPLOY=True
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+
+nuget:
+  disable_publish_on_pr: true
+
+before_build:
+- nuget restore XwaPilotEditor\XwaPilotEditor.sln
+
+build:
+  project: XwaPilotEditor\XwaPilotEditor.sln
+  verbosity: minimal
+
+after_build:
+- XwaPilotEditor\build-dist.cmd
+
+artifacts:
+- path: XwaPilotEditor\dist
+  name: XwaPilotEditor-$(APPVEYOR_BUILD_VERSION)
+  type: zip
