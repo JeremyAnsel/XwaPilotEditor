@@ -12,7 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FolderBrowserForWPF" Version="1.2.0" />
     <PackageReference Include="JeremyAnsel.Xwa.Pilot" Version="1.0.1" />
+    <PackageReference Include="JeremyAnsel.Xwa.Workspace" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

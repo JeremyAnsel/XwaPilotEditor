@@ -10,7 +10,8 @@
         Title="{Binding PilotFileName, StringFormat='Xwa Pilot Editor {0}', FallbackValue='Xwa Pilot Editor'}"
         Height="500"
         Width="850"
-        UseLayoutRounding="True">
+        UseLayoutRounding="True"
+        x:Name="main">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.New"
                         Executed="ExecuteNewPilot" />
@@ -166,13 +167,13 @@
                             <StackPanel>
                                 <TextBlock Text="KillsPerCraftPerMissionType:" />
                                 <local:DataGridEditor ItemsSource="{Binding Pilot.KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                      Tag="" />
+                                                      Tag="{Binding CraftNames, ElementName=main}" />
                                 <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
                                 <local:DataGridEditor ItemsSource="{Binding Pilot.KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                      Tag="" />
+                                                      Tag="{Binding CraftNames, ElementName=main}" />
                                 <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
                                 <local:DataGridEditor ItemsSource="{Binding Pilot.KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                      Tag="" />
+                                                      Tag="{Binding CraftNames, ElementName=main}" />
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -308,13 +309,13 @@
                             <StackPanel>
                                 <TextBlock Text="KillsPerCraftPerMissionType:" />
                                 <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                      Tag="" />
+                                                      Tag="{Binding CraftNames, ElementName=main}" />
                                 <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
                                 <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
                                                       Tag="" />
                                 <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
                                 <local:DataGridEditor ItemsSource="{Binding Pilot.ObjectStats.KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                      Tag="" />
+                                                      Tag="{Binding CraftNames, ElementName=main}" />
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -468,13 +469,13 @@
                                     <StackPanel>
                                         <TextBlock Text="KillsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                     </StackPanel>
                                 </ScrollViewer>
                             </TabItem>
@@ -602,13 +603,13 @@
                                     <StackPanel>
                                         <TextBlock Text="KillsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                     </StackPanel>
                                 </ScrollViewer>
                             </TabItem>
@@ -736,13 +737,13 @@
                                     <StackPanel>
                                         <TextBlock Text="KillsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                     </StackPanel>
                                 </ScrollViewer>
                             </TabItem>
@@ -870,13 +871,13 @@
                                     <StackPanel>
                                         <TextBlock Text="KillsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsSharedPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsSharedPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                         <TextBlock Text="KillsAssistsPerCraftPerMissionType:" />
                                         <local:DataGridEditor ItemsSource="{Binding KillsAssistsPerCraftPerMissionType, Converter={x:Static local:ArrayBinderConverter.Default}, ConverterParameter={x:Type pilot:PilotMissionCategory}}"
-                                                              Tag="" />
+                                                              Tag="{Binding CraftNames, ElementName=main}" />
                                     </StackPanel>
                                 </ScrollViewer>
                             </TabItem>

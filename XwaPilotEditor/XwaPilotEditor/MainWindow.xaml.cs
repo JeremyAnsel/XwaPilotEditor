@@ -1,4 +1,5 @@
 ﻿using JeremyAnsel.Xwa.Pilot;
+using JeremyAnsel.Xwa.Workspace;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,18 @@ namespace XwaPilotEditor
     {
         public MainWindow()
         {
+            SetWorkingDirectory();
             InitializeComponent();
-
             Pilot = new PilotFile();
             PilotFileName = null;
             RefreshPilot();
         }
+
+        public string WorkingDirectory { get; set; }
+
+        public XwaWorkspace Workspace { get; set; }
+
+        public List<string> CraftNames { get; set; }
 
         public PilotFile Pilot { get; set; }
 
@@ -39,6 +46,46 @@ namespace XwaPilotEditor
         {
             this.DataContext = null;
             this.DataContext = this;
+        }
+
+        private void SetWorkingDirectory()
+        {
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
+
+            var dlg = new FolderBrowserForWPF.Dialog()
+            {
+                Title = "Choose a working directory containing " + XwaWorkspace.ExeName
+            };
+
+            if (dlg.ShowDialog() != true)
+            {
+                return;
+            }
+
+            WorkingDirectory = null;
+            Workspace = null;
+
+            try
+            {
+                string path = dlg.FileName;
+                Workspace = new XwaWorkspace(path);
+                WorkingDirectory = path;
+
+                CraftNames = new List<string>(Workspace.SpeciesTable.Entries.Count);
+                for (int spec = 0; spec < Workspace.SpeciesTable.Entries.Count; spec++)
+                {
+                    XwaExeSpeciesEntry specEntry = Workspace.SpeciesTable.Entries[spec];
+                    string name = Workspace.GetModelName(specEntry.Value);
+                    CraftNames.Add(name);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void ExecuteNewPilot(object sender, ExecutedRoutedEventArgs e)
