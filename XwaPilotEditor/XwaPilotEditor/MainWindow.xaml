@@ -50,7 +50,7 @@
                         <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
                                             Text="{Binding Pilot.MissionDirectoryId}" />
                         <TextBlock Text="MissionDescriptionIds:" />
-                        <local:ListBoxEditor ItemsSource="{Binding Pilot.MissionDescriptionIds}"
+                        <local:ListBoxEditor ItemsSource="{Binding Pilot.MissionDescriptionIds, Mode=TwoWay}"
                                              Tag="{x:Type pilot:PilotMissionDirectory}" />
                         <TextBlock Text="MultiplayerGameName:" />
                         <TextBox Text="{Binding Pilot.MultiplayerGameName, UpdateSourceTrigger=PropertyChanged}" />
@@ -79,7 +79,7 @@
                         <TextBlock Text="TotalMissionsPlayedCount:" />
                         <TextBox Text="{Binding Pilot.TotalMissionsPlayedCount, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock Text="TotalMissionsPlayedCountPerRating:" />
-                        <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalMissionsPlayedCountPerRating}"
+                        <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalMissionsPlayedCountPerRating, Mode=TwoWay}"
                                              Tag="{x:Type pilot:PilotRating}" />
                         <TextBlock Text="PilotRatingName:" />
                         <TextBox Text="{Binding Pilot.PilotRatingName, UpdateSourceTrigger=PropertyChanged}" />
@@ -105,7 +105,7 @@
                         <TextBlock Text="MissionFileName:" />
                         <TextBox Text="{Binding Pilot.MissionFileName, UpdateSourceTrigger=PropertyChanged}" />
                         <TextBlock Text="ProvingGroundsMissionPerPlayer:" />
-                        <local:ListBoxEditor ItemsSource="{Binding Pilot.ProvingGroundsMissionPerPlayer}"
+                        <local:ListBoxEditor ItemsSource="{Binding Pilot.ProvingGroundsMissionPerPlayer, Mode=TwoWay}"
                                              Tag="" />
                         <TextBlock Text="MeleeMissionIndex:" />
                         <TextBox Text="{Binding Pilot.MeleeMissionIndex, UpdateSourceTrigger=PropertyChanged}" />
@@ -121,43 +121,43 @@
                         <ScrollViewer>
                             <StackPanel>
                                 <TextBlock Text="TotalScorePerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalScorePerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalScorePerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalMissionsPlayedCountPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalMissionsPlayedCountPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.NumOfSpecialCraftInspectedPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.NumOfSpecialCraftInspectedPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.EnergyWeaponsHitsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.EnergyWeaponsHitsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.EnergyWeaponsFiredPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.EnergyWeaponsFiredPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="WarheadsHitsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.WarheadsHitsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.WarheadsHitsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="WarheadsFiredPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.WarheadsFiredPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.WarheadsFiredPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalCraftLossesPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalCraftLossesPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalCraftLossesPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="LossesByCollisionsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByCollisionsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByCollisionsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="LossesByStarshipsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByStarshipsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByStarshipsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="LossesByMinesPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByMinesPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.LossesByMinesPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalKillsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalKillsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalKillsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalFriendliesKilledPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.TotalFriendliesKilledPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                             </StackPanel>
                         </ScrollViewer>
@@ -223,13 +223,13 @@
                         <ScrollViewer>
                             <StackPanel>
                                 <TextBlock Text="KillsFullOnPlayer:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullOnPlayer}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullOnPlayer, Mode=TwoWay}" />
                                 <TextBlock Text="KillsSharedOnPlayer:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedOnPlayer}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedOnPlayer, Mode=TwoWay}" />
                                 <TextBlock Text="KillsFullFromPlayer:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullFromPlayer}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullFromPlayer, Mode=TwoWay}" />
                                 <TextBlock Text="KillsSharedFromPlayer:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedFromPlayer}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedFromPlayer, Mode=TwoWay}" />
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -237,13 +237,13 @@
                         <ScrollViewer>
                             <StackPanel>
                                 <TextBlock Text="KillsFullOnFlightGroup:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullOnFlightGroup}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullOnFlightGroup, Mode=TwoWay}" />
                                 <TextBlock Text="KillsSharedOnFlightGroup:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedOnFlightGroup}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedOnFlightGroup, Mode=TwoWay}" />
                                 <TextBlock Text="KillsFullFromFlightGroup:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullFromFlightGroup}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsFullFromFlightGroup, Mode=TwoWay}" />
                                 <TextBlock Text="KillsSharedFromFlightGroup:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedFromFlightGroup}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.KillsSharedFromFlightGroup, Mode=TwoWay}" />
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -251,7 +251,7 @@
                         <ScrollViewer>
                             <StackPanel>
                                 <TextBlock Text="FlightGroupRating:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.FlightGroupRating}" />
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.FlightGroupRating, Mode=TwoWay}" />
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
@@ -263,43 +263,43 @@
                         <ScrollViewer>
                             <StackPanel>
                                 <TextBlock Text="TotalScorePerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalScorePerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalScorePerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalMissionsPlayedCountPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalMissionsPlayedCountPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.NumOfSpecialCraftInspectedPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.NumOfSpecialCraftInspectedPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.EnergyWeaponsHitsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.EnergyWeaponsHitsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.EnergyWeaponsFiredPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.EnergyWeaponsFiredPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="WarheadsHitsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.WarheadsHitsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.WarheadsHitsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="WarheadsFiredPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.WarheadsFiredPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.WarheadsFiredPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalCraftLossesPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalCraftLossesPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalCraftLossesPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="LossesByCollisionsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByCollisionsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByCollisionsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="LossesByStarshipsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByStarshipsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByStarshipsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="LossesByMinesPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByMinesPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.LossesByMinesPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalKillsPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalKillsPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalKillsPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                                 <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
-                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalFriendliesKilledPerMissionType}"
+                                <local:ListBoxEditor ItemsSource="{Binding Pilot.ObjectStats.TotalFriendliesKilledPerMissionType, Mode=TwoWay}"
                                                      Tag="{x:Type pilot:PilotMissionCategory}" />
                             </StackPanel>
                         </ScrollViewer>
@@ -364,7 +364,7 @@
                 </TabControl>
             </TabItem>
             <TabItem Header="CraftKnown">
-                <local:ListBoxEditor ItemsSource="{Binding Pilot.CraftKnown}"
+                <local:ListBoxEditor ItemsSource="{Binding Pilot.CraftKnown, Mode=TwoWay}"
                                      Tag="" />
             </TabItem>
             <TabItem Header="NetworkPlayers">
@@ -391,24 +391,24 @@
                                         <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
                                                             Text="{Binding MissionDirectoryId}" />
                                         <TextBlock Text="MissionDescriptionIds:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionDirectory}" />
                                         <TextBlock Text="M0048:" />
                                         <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
                                         <TextBlock Text="AwardsCount1:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0064:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="AwardsCount2:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0094:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="KalidorCrescentPoints:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="Score:" />
                                         <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
@@ -423,43 +423,43 @@
                                 <ScrollViewer>
                                     <StackPanel>
                                         <TextBlock Text="TotalScorePerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalCraftLossesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByCollisionsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByStarshipsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByMinesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalKillsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                     </StackPanel>
                                 </ScrollViewer>
@@ -525,24 +525,24 @@
                                         <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
                                                             Text="{Binding MissionDirectoryId}" />
                                         <TextBlock Text="MissionDescriptionIds:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionDirectory}" />
                                         <TextBlock Text="M0048:" />
                                         <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
                                         <TextBlock Text="AwardsCount1:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0064:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="AwardsCount2:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0094:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="KalidorCrescentPoints:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="Score:" />
                                         <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
@@ -557,43 +557,43 @@
                                 <ScrollViewer>
                                     <StackPanel>
                                         <TextBlock Text="TotalScorePerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalCraftLossesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByCollisionsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByStarshipsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByMinesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalKillsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                     </StackPanel>
                                 </ScrollViewer>
@@ -659,24 +659,24 @@
                                         <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
                                                             Text="{Binding MissionDirectoryId}" />
                                         <TextBlock Text="MissionDescriptionIds:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionDirectory}" />
                                         <TextBlock Text="M0048:" />
                                         <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
                                         <TextBlock Text="AwardsCount1:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0064:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="AwardsCount2:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0094:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="KalidorCrescentPoints:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="Score:" />
                                         <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
@@ -691,43 +691,43 @@
                                 <ScrollViewer>
                                     <StackPanel>
                                         <TextBlock Text="TotalScorePerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalCraftLossesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByCollisionsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByStarshipsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByMinesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalKillsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                     </StackPanel>
                                 </ScrollViewer>
@@ -793,24 +793,24 @@
                                         <local:EnumComboBox EnumType="{x:Type pilot:PilotMissionDirectory}"
                                                             Text="{Binding MissionDirectoryId}" />
                                         <TextBlock Text="MissionDescriptionIds:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds}"
+                                        <local:ListBoxEditor ItemsSource="{Binding MissionDescriptionIds, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionDirectory}" />
                                         <TextBlock Text="M0048:" />
                                         <TextBox Text="{Binding M0048, UpdateSourceTrigger=PropertyChanged}" />
                                         <TextBlock Text="AwardsCount1:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount1, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0064:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0064}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0064, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="AwardsCount2:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2}"
+                                        <local:ListBoxEditor ItemsSource="{Binding AwardsCount2, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="M0094:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding M0094}"
+                                        <local:ListBoxEditor ItemsSource="{Binding M0094, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="KalidorCrescentPoints:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints}"
+                                        <local:ListBoxEditor ItemsSource="{Binding KalidorCrescentPoints, Mode=TwoWay}"
                                                              Tag="" />
                                         <TextBlock Text="Score:" />
                                         <TextBox Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" />
@@ -825,43 +825,43 @@
                                 <ScrollViewer>
                                     <StackPanel>
                                         <TextBlock Text="TotalScorePerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalScorePerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalMissionsPlayedCountPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalMissionsPlayedCountPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="NumOfSpecialCraftInspectedPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding NumOfSpecialCraftInspectedPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="EnergyWeaponsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding EnergyWeaponsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsHitsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsHitsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="WarheadsFiredPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding WarheadsFiredPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalCraftLossesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalCraftLossesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByCollisionsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByCollisionsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByStarshipsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByStarshipsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="LossesByMinesPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding LossesByMinesPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalKillsPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalKillsPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                         <TextBlock Text="TotalFriendliesKilledPerMissionType:" />
-                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType}"
+                                        <local:ListBoxEditor ItemsSource="{Binding TotalFriendliesKilledPerMissionType, Mode=TwoWay}"
                                                              Tag="{x:Type pilot:PilotMissionCategory}" />
                                     </StackPanel>
                                 </ScrollViewer>
@@ -916,7 +916,7 @@
                 </TabControl>
             </TabItem>
             <TabItem Header="EmailsStatus">
-                <local:ListBoxEditor ItemsSource="{Binding Pilot.EmailsStatus}"
+                <local:ListBoxEditor ItemsSource="{Binding Pilot.EmailsStatus, Mode=TwoWay}"
                                      Tag="" />
             </TabItem>
         </TabControl>

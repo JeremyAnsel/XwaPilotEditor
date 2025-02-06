@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace XwaPilotEditor
 {
@@ -24,17 +17,51 @@ namespace XwaPilotEditor
             SetValue(VirtualizingPanel.IsVirtualizingProperty, false);
         }
 
+        public Type ArrayType { get; private set; }
+
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
             base.OnItemsSourceChanged(oldValue, newValue);
 
+            if (newValue is not null && newValue.GetType().IsArray)
+            {
+                ArrayType = newValue.GetType().GetElementType();
+
+                if (newValue is int[] collectionInt32)
+                {
+                    var source = new Collection<ListBoxEditorItem<int>>();
+                    int index = 0;
+                    foreach (var value in newValue)
+                    {
+                        source.Add(new ListBoxEditorItem<int>(collectionInt32, index));
+                        index++;
+                    }
+                    ItemsSource = source;
+                }
+                else if (newValue is byte[] collectionByte)
+                {
+                    var source = new Collection<ListBoxEditorItem<byte>>();
+                    int index = 0;
+                    foreach (var value in newValue)
+                    {
+                        source.Add(new ListBoxEditorItem<byte>(collectionByte, index));
+                        index++;
+                    }
+                    ItemsSource = source;
+                }
+                else
+                {
+                    throw new ArgumentNullException(nameof(newValue));
+                }
+
+                return;
+            }
+
             if (newValue is not null)
             {
-                Type type = newValue.GetType().GetElementType();
-
-                if (type.IsEnum)
+                if (ArrayType is not null && ArrayType.IsEnum)
                 {
-                    SetItemTemplate(type);
+                    SetItemTemplate(ArrayType);
                 }
                 else
                 {
@@ -57,7 +84,7 @@ namespace XwaPilotEditor
 
             var textBlock = new FrameworkElementFactory(typeof(TextBlock));
             textBlock.SetValue(Grid.ColumnProperty, 0);
-            textBlock.SetValue(TextBlock.TextProperty, new Binding("TemplatedParent.(ItemsControl.AlternationIndex)")
+            textBlock.SetBinding(TextBlock.TextProperty, new Binding("TemplatedParent.(ItemsControl.AlternationIndex)")
             {
                 RelativeSource = new RelativeSource(RelativeSourceMode.TemplatedParent),
                 Converter = TemplatedParentRowHeaderConverter.Default,
@@ -69,7 +96,10 @@ namespace XwaPilotEditor
             {
                 var textBox = new FrameworkElementFactory(typeof(TextBox));
                 textBox.SetValue(Grid.ColumnProperty, 1);
-                textBox.SetValue(TextBox.TextProperty, new Binding("."));
+                textBox.SetBinding(TextBox.TextProperty, new Binding("NewValue")
+                {
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                });
                 grid.AppendChild(textBox);
             }
             else
@@ -77,7 +107,10 @@ namespace XwaPilotEditor
                 var comboBox = new FrameworkElementFactory(typeof(EnumComboBox));
                 comboBox.SetValue(Grid.ColumnProperty, 1);
                 comboBox.SetValue(EnumComboBox.EnumTypeProperty, enumType);
-                comboBox.SetValue(EnumComboBox.TextProperty, new Binding("."));
+                comboBox.SetBinding(ComboBox.SelectedIndexProperty, new Binding("NewValue")
+                {
+                    UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                });
                 grid.AppendChild(comboBox);
             }
 
